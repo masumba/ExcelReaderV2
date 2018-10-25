@@ -59,7 +59,6 @@ public class HomeController {
     @RequestMapping(value = "/saveFile",method = RequestMethod.POST)
     public ModelAndView homePageFileUpload(@RequestParam("excelFile")MultipartFile file){
         ModelAndView mv = new ModelAndView("home");
-        /**/
         try {
             mv.addObject("msg","Submission");
             storageService.storeFile(file);
@@ -70,7 +69,6 @@ public class HomeController {
 
             mv.addObject("msg","Failed Submission");
         }
-        /**/
         return mv;
     }
 

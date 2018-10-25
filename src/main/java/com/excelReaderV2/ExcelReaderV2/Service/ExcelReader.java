@@ -70,6 +70,7 @@ public class ExcelReader {
 
     public void excelColumnTargeter(){
         try {
+            uploadFiles.clear();
             uploadFiles.add(sqlMapper.getExcelLocation());
             sqlMapper = xmlConfig.readConfig(sqlMapper.getSqlXmlLocation());
             String DirFileLocation = sqlMapper.getExcelLocation();
@@ -96,6 +97,7 @@ public class ExcelReader {
     public void excelDocumentColumnsTargetCellNamesAndNums(Iterator iterator,Row row){
 
         //Numbers
+        targetCellNums.clear();
         int intCounter = 0;
         while (iterator.hasNext() && intCounter<1){
             Row currentRow = (Row) iterator.next();
@@ -121,6 +123,7 @@ public class ExcelReader {
         }
 
         /*Names*/
+        targetCellNames.clear();
         Iterator iterator1 = targetCellNums.iterator();
         for (int i=1;i<=1;i++) {
             int intCounter1 = 0;
@@ -141,6 +144,7 @@ public class ExcelReader {
 
     public void excelDocumentInsertScript(Row row, XSSFSheet xssfSheet){
         //Row Data (input)
+        targetSqlScript.clear();
         Row row1;
         for (int i=1; i<=xssfSheet.getLastRowNum();i++){
             row1 = (Row)xssfSheet.getRow(i);
