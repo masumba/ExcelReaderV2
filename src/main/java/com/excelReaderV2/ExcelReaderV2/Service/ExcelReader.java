@@ -163,6 +163,9 @@ public class ExcelReader {
                     strBuild.append("null");
                 } else {
                     String excelInput = row1.getCell(rowNumValue).toString();
+                    excelInput = excelInput.replace("`","");
+                    excelInput = excelInput.replace("\"","");
+
                     strBuild.append(excelInput);
                 }
                 strcount++;
@@ -190,6 +193,7 @@ public class ExcelReader {
                 SQLQuery query = session.createSQLQuery(sql);
                 query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
                 results = query.executeUpdate();
+                session.close();
             } catch (Throwable ex){
                 throw new ExceptionInInitializerError(ex);
             }
